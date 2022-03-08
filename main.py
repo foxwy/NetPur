@@ -2,7 +2,7 @@
 # @Author: WY
 # @Date:   2022-03-07 19:03:32
 # @Last Modified by:   WY
-# @Last Modified time: 2022-03-08 11:20:39
+# @Last Modified time: 2022-03-08 13:33:43
 
 import numpy as np
 from dataset import Dataset_state
@@ -28,7 +28,6 @@ def Plt_set(ax, xlabel='x', ylabel='y'):
     ax.tick_params(width=1.5)
     ax.legend(prop=font, loc=1)
     plt.tight_layout()
-    plt.show()
 
 
 def Get_figure(dataset, model):
@@ -36,13 +35,17 @@ def Get_figure(dataset, model):
     X_train, X_test, y_train, y_test = dataset[0], dataset[1], dataset[2], dataset[3]
 
     #-----figure-----
-    fig, ax = plt.subplots(1, 1, figsize=(8, 6))
-    ax.scatter(abs(X_train.dot(np.array([1, 1, 1, -1]))), y_train, label='train_real', linewidth=2.5)
-    ax.scatter(abs(X_train.dot(np.array([1, 1, 1, -1]))), model.predict(X_train), label='train_pre', linewidth=2.5)
-    ax.scatter(abs(X_test.dot(np.array([1, 1, 1, -1]))), y_test, label='test_real', linewidth=2.5)
-    ax.scatter(abs(X_test.dot(np.array([1, 1, 1, -1]))), model.predict(X_test), label='test_pre', linewidth=2.5)
+    fig, ax = plt.subplots(1, 2, figsize=(14, 6))
+    ax[0].scatter(abs(X_train.dot(np.array([1, 1, 1, -1]))), y_train, label='train_real', linewidth=2.5)
+    ax[0].scatter(abs(X_train.dot(np.array([1, 1, 1, -1]))), model.predict(X_train), label='train_pre', linewidth=2.5)
 
-    Plt_set(ax, 'S', 'Purity')
+    ax[1].scatter(abs(X_test.dot(np.array([1, 1, 1, -1]))), y_test, label='test_real', linewidth=2.5)
+    ax[1].scatter(abs(X_test.dot(np.array([1, 1, 1, -1]))), model.predict(X_test), label='test_pre', linewidth=2.5)
+
+    Plt_set(ax[0], 'S', 'Purity')
+    Plt_set(ax[1], 'S', 'Purity')
+    plt.savefig('1.jpg', dpi=600)
+    plt.show()
 
     #-------------------------------------
     fig, ax = plt.subplots(1, 1, figsize=(8, 6))
@@ -57,6 +60,8 @@ def Get_figure(dataset, model):
     ax.plot(y_train, y_train, label='k=1', linewidth=2.5)
 
     Plt_set(ax, 'real value', 'predict')
+    plt.savefig('2.jpg', dpi=600)
+    plt.show()
 
 
 if __name__ == "__main__":
