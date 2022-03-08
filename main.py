@@ -2,7 +2,7 @@
 # @Author: WY
 # @Date:   2022-03-07 19:03:32
 # @Last Modified by:   WY
-# @Last Modified time: 2022-03-08 15:29:01
+# @Last Modified time: 2022-03-08 21:21:59
 
 import numpy as np
 from dataset import Dataset_state
@@ -66,10 +66,10 @@ def Get_figure(dataset, model):
 
 if __name__ == "__main__":
     #-----dataset-----
-    X_train, X_test, y_train, y_test = Dataset_state(1000, 0.4, 'Werner')
+    X_train, X_test, y_train, y_test = Dataset_state(1000, 0.4, 'random')
 
     #-----model-----
-    model = Get_model('Gauss')  # KNN, RF, Gauss, Bagging
+    model = Get_model('GB')  # KNN, RF, Gauss, Bagging
 
     #-----predict-----
     model.fit(X_train, y_train)

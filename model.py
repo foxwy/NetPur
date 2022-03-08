@@ -2,7 +2,7 @@
 # @Author: WY
 # @Date:   2022-03-08 10:04:54
 # @Last Modified by:   WY
-# @Last Modified time: 2022-03-08 11:19:11
+# @Last Modified time: 2022-03-08 21:21:45
 
 from sklearn.svm import SVR
 from sklearn import linear_model
@@ -76,7 +76,7 @@ def Get_model(m_type='RF'):
 
     # tree
     elif m_type == 'DT':
-        model = DecisionTreeRegressor()
+        model = DecisionTreeRegressor(max_depth=10)
     elif m_type == 'RF':
         model = RandomForestRegressor(n_estimators=150)
 
@@ -106,8 +106,8 @@ def Get_model(m_type='RF'):
 
     # NN
     elif m_type == 'MLP':
-        model = MLPRegressor(hidden_layer_sizes=(50, 200, 200, 50), early_stopping=True, 
-                             activation='relu', learning_rate='adaptive')
+        model = MLPRegressor(hidden_layer_sizes=(100, 200, 200, 200, 100), early_stopping=True, 
+                             activation='relu')
 
     return model
 

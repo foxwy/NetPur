@@ -2,7 +2,7 @@
 # @Author: WY
 # @Date:   2022-03-07 19:03:11
 # @Last Modified by:   WY
-# @Last Modified time: 2022-03-08 15:26:03
+# @Last Modified time: 2022-03-08 21:18:49
 
 import numpy as np
 from numpy import sin, cos, sqrt
@@ -29,12 +29,15 @@ def Get_rho(v, s_type):
         rho = v * psi.dot(psi.T.conjugate()) + (1 - v) * np.kron(I, I) / 4
         
     elif s_type == 'random':  # random mixed state
-        A = np.random.uniform(size=(4, 4))
-        B = np.random.uniform(size=(4, 4))
+        v = np.random.choice([2, 3, 4], 1)[0]
+        #print(v)
+        A = np.random.normal(size=(4, v))
+        B = np.random.normal(size=(4, v))
         sig = A + 1j * B
         rho = sig.dot(sig.T.conjugate()) / np.trace(sig.dot(sig.T.conjugate()))
+        #print(np.trace(rho))
 
-    return rho
+    return np.mat(rho)
 
 
 def Get_theta_Matrix(rho):
@@ -121,7 +124,7 @@ def Dataset_state(N, te_size, s_type):
 
 
 if __name__ == "__main__":
-    X_train, X_test, y_train, y_test = Dataset_state(1000, 0.3, 'Werner')
+    X_train, X_test, y_train, y_test = Dataset_state(1000, 0.3, 'random')
     print('X_train:\n', X_train)
     print('y_train:\n', y_train)
     print('X_test:\n', X_test)
