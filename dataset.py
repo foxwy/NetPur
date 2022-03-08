@@ -2,7 +2,7 @@
 # @Author: WY
 # @Date:   2022-03-07 19:03:11
 # @Last Modified by:   WY
-# @Last Modified time: 2022-03-08 11:21:43
+# @Last Modified time: 2022-03-08 15:26:03
 
 import numpy as np
 from numpy import sin, cos, sqrt
@@ -121,7 +121,7 @@ def Dataset_state(N, te_size, s_type):
 
 
 if __name__ == "__main__":
-    X_train, X_test, y_train, y_test = Dataset_state(100, 0.3, 'random')
+    X_train, X_test, y_train, y_test = Dataset_state(1000, 0.3, 'Werner')
     print('X_train:\n', X_train)
     print('y_train:\n', y_train)
     print('X_test:\n', X_test)

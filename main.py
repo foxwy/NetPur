@@ -2,7 +2,7 @@
 # @Author: WY
 # @Date:   2022-03-07 19:03:32
 # @Last Modified by:   WY
-# @Last Modified time: 2022-03-08 13:33:43
+# @Last Modified time: 2022-03-08 15:29:01
 
 import numpy as np
 from dataset import Dataset_state
@@ -44,7 +44,7 @@ def Get_figure(dataset, model):
 
     Plt_set(ax[0], 'S', 'Purity')
     Plt_set(ax[1], 'S', 'Purity')
-    plt.savefig('1.jpg', dpi=600)
+    plt.savefig('3.jpg', dpi=600)
     plt.show()
 
     #-------------------------------------
@@ -60,13 +60,13 @@ def Get_figure(dataset, model):
     ax.plot(y_train, y_train, label='k=1', linewidth=2.5)
 
     Plt_set(ax, 'real value', 'predict')
-    plt.savefig('2.jpg', dpi=600)
+    plt.savefig('4.jpg', dpi=600)
     plt.show()
 
 
 if __name__ == "__main__":
     #-----dataset-----
-    X_train, X_test, y_train, y_test = Dataset_state(1000, 0.4, 'random')
+    X_train, X_test, y_train, y_test = Dataset_state(1000, 0.4, 'Werner')
 
     #-----model-----
     model = Get_model('Gauss')  # KNN, RF, Gauss, Bagging
